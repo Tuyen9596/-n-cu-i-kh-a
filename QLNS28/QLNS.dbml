@@ -90,19 +90,12 @@
       <Column Name="LUONG" Type="System.Double" DbType="Float" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.updateChamCong" Method="updateChamCong">
-    <Parameter Name="manv" Type="System.String" DbType="NChar(30)" />
-    <Parameter Name="songaynghi" Type="System.Int32" DbType="Int" />
-    <Parameter Name="songaydilam" Type="System.Int32" DbType="Int" />
-    <Parameter Name="tienthuong" Type="System.Double" DbType="Float" />
-    <Parameter Name="tienphat" Type="System.Double" DbType="Float" />
-    <Parameter Name="phucap" Type="System.Double" DbType="Float" />
-    <Return Type="System.Int32" />
-  </Function>
   <Function Name="dbo.updateluongnhanvien" Method="updateluongnhanvien">
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.updatetongluongnhanvien1" Method="updatetongluongnhanvien1" />
+  <Function Name="dbo.updatetongluongnhanvien1" Method="updatetongluongnhanvien1" IsComposable="true">
+    <Return Type="object" />
+  </Function>
   <Function Name="dbo.updateNhanVien" Method="updateNhanVien">
     <Parameter Name="MaNV" Parameter="maNV" Type="System.String" DbType="NVarChar(10)" />
     <Parameter Name="hoten" Type="System.String" DbType="NVarChar(70)" />
@@ -114,6 +107,22 @@
     <Parameter Name="macv" Type="System.String" DbType="NVarChar(70)" />
     <Parameter Name="maluong" Type="System.String" DbType="NVarChar(70)" />
     <Parameter Name="luong" Type="System.Double" DbType="Float" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.taobangchamcongmoi" Method="taobangchamcongmoi">
+    <Parameter Name="thang" Type="System.Int32" DbType="Int" />
+    <Parameter Name="nam" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.updateChamCong" Method="updateChamCong">
+    <Parameter Name="manv" Type="System.String" DbType="NChar(30)" />
+    <Parameter Name="songaynghi" Type="System.Int32" DbType="Int" />
+    <Parameter Name="songaydilam" Type="System.Int32" DbType="Int" />
+    <Parameter Name="tienthuong" Type="System.Double" DbType="Float" />
+    <Parameter Name="tienphat" Type="System.Double" DbType="Float" />
+    <Parameter Name="phucap" Type="System.Double" DbType="Float" />
+    <Parameter Name="thang" Type="System.Int32" DbType="Int" />
+    <Parameter Name="nam" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
 </Database>

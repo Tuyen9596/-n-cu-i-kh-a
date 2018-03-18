@@ -146,13 +146,6 @@ namespace QLNS28
 			return ((ISingleResult<searchNhanVienTheoMaResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.updateChamCong")]
-		public int updateChamCong([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NChar(30)")] string manv, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> songaynghi, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> songaydilam, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] System.Nullable<double> tienthuong, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] System.Nullable<double> tienphat, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] System.Nullable<double> phucap)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), manv, songaynghi, songaydilam, tienthuong, tienphat, phucap);
-			return ((int)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.updateluongnhanvien")]
 		public int updateluongnhanvien()
 		{
@@ -160,16 +153,30 @@ namespace QLNS28
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.updatetongluongnhanvien1")]
-		public void updatetongluongnhanvien1()
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.updatetongluongnhanvien1", IsComposable=true)]
+		public object updatetongluongnhanvien1()
 		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((object)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod()))).ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.updateNhanVien")]
 		public int updateNhanVien([global::System.Data.Linq.Mapping.ParameterAttribute(Name="MaNV", DbType="NVarChar(10)")] string maNV, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(70)")] string hoten, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> ngaysinh, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(70)")] string gioitinh, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(200)")] string quequan, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(70)")] string sdt, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(70)")] string mapb, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(70)")] string macv, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(70)")] string maluong, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] System.Nullable<double> luong)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), maNV, hoten, ngaysinh, gioitinh, quequan, sdt, mapb, macv, maluong, luong);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.taobangchamcongmoi")]
+		public int taobangchamcongmoi([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> thang, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> nam)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), thang, nam);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.updateChamCong")]
+		public int updateChamCong([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NChar(30)")] string manv, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> songaynghi, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> songaydilam, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] System.Nullable<double> tienthuong, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] System.Nullable<double> tienphat, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] System.Nullable<double> phucap, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> thang, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> nam)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), manv, songaynghi, songaydilam, tienthuong, tienphat, phucap, thang, nam);
 			return ((int)(result.ReturnValue));
 		}
 	}

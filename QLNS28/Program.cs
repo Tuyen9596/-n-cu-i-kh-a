@@ -20,7 +20,7 @@ namespace QLNS28
             BonusSkins.Register();
             SkinManager.EnableFormSkins();
             UserLookAndFeel.Default.SetSkinStyle("DevExpress Style");
-            Application.Run(new fmDangnhap());
+            Application.Run(new frmChamCong());
         }
     }
 }
