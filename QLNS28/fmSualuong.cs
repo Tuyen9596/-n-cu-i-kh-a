@@ -1,19 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QLNS28
 {
     public partial class fmSualuong : DevExpress.XtraEditors.XtraForm
     {
-        QLNSDataContext db = new QLNSDataContext();
-        LUONG l=null;
+        private QLNSDataContext db = new QLNSDataContext();
+        private LUONG l = null;
+
         public fmSualuong(LUONG _l)
         {
             l = _l;
@@ -32,10 +27,11 @@ namespace QLNS28
             luongcb.Text = l.LUONGCB.ToString().Trim();
             heso.Text = l.HSLUONG.ToString().Trim();
         }
-        
+
         private void xong_Click(object sender, EventArgs e)
         {
-            if(ten.Text!=null && luongcb.Text!="" && heso.Text!=""){
+            if (ten.Text != null && luongcb.Text != "" && heso.Text != "")
+            {
                 LUONG tb = db.LUONGs.Single(p => p.MALUONG == l.MALUONG);
                 tb.MALUONG = ma.Text;
                 tb.TENLUONG = ten.Text;
@@ -47,8 +43,6 @@ namespace QLNS28
                 this.Close();
             }
             else DevExpress.XtraEditors.XtraMessageBox.Show("Có gì đó sai sai ! ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
- 
-            
         }
 
         private void btnHoantac_Click(object sender, EventArgs e)
@@ -60,6 +54,5 @@ namespace QLNS28
         {
             this.Close();
         }
-
     }
 }

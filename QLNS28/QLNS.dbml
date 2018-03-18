@@ -1,5 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QLNS" Class="QLNSDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=TUYEN\KISS;Initial Catalog=QLNS;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False" SettingsObjectName="QLNS28.Properties.Settings" SettingsPropertyName="QLNSConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ChamCong" Member="ChamCongs">
+    <Type Name="ChamCong">
+      <Column Name="MaCC" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaNV" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="HOTEN" Type="System.String" DbType="NVarChar(70)" CanBeNull="true" />
+      <Column Name="MAPB" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="Thang" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Nam" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SoNgayNghi" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SoNgayDiLam" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TienThuong" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TienPhat" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PhuCap" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TongLuong" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Association Name="NHANVIEN_ChamCong" Member="NHANVIEN" ThisKey="MaNV" OtherKey="MANV" Type="NHANVIEN" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.CHUCVU" Member="CHUCVUs">
     <Type Name="CHUCVU">
       <Column Name="MACV" Type="System.String" DbType="NChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -28,12 +45,6 @@
       <Column Name="MACV" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
       <Column Name="MALUONG" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
       <Column Name="LUONG" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="SoNgayNghi" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SoNgayDiLam" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TienThuong" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="TienPhat" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="PhuCap" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="TONGLUONG" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Association Name="NHANVIEN_ChamCong" Member="ChamCongs" ThisKey="MANV" OtherKey="MaNV" Type="ChamCong" />
       <Association Name="CHUCVU_NHANVIEN" Member="CHUCVU" ThisKey="MACV" OtherKey="MACV" Type="CHUCVU" IsForeignKey="true" />
       <Association Name="LUONG_NHANVIEN" Member="LUONG1" ThisKey="MALUONG" OtherKey="MALUONG" Type="LUONG" IsForeignKey="true" />
@@ -64,23 +75,6 @@
       <Association Name="QUYEN_TAIKHOAN" Member="QUYEN" ThisKey="MAQUYEN" OtherKey="MAQUYEN" Type="QUYEN" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.ChamCong" Member="ChamCongs">
-    <Type Name="ChamCong">
-      <Column Name="MaCC" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="MaNV" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
-      <Column Name="HOTEN" Type="System.String" DbType="NVarChar(70)" CanBeNull="true" />
-      <Column Name="MAPB" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
-      <Column Name="Thang" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Nam" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SoNgayNghi" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SoNgayDiLam" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TienThuong" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="TienPhat" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="PhuCap" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="TongLuong" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Association Name="NHANVIEN_ChamCong" Member="NHANVIEN" ThisKey="MaNV" OtherKey="MANV" Type="NHANVIEN" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Function Name="dbo.searchNhanVienTheoMa" Method="searchNhanVienTheoMa">
     <Parameter Name="manv" Type="System.String" DbType="NChar(30)" />
     <ElementType Name="searchNhanVienTheoMaResult">
@@ -94,12 +88,6 @@
       <Column Name="MACV" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
       <Column Name="MALUONG" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
       <Column Name="LUONG" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="SoNgayNghi" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SoNgayDiLam" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TienThuong" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="TienPhat" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="PhuCap" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="TONGLUONG" Type="System.Double" DbType="Float" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.updateChamCong" Method="updateChamCong">
@@ -114,23 +102,18 @@
   <Function Name="dbo.updateluongnhanvien" Method="updateluongnhanvien">
     <Return Type="System.Int32" />
   </Function>
+  <Function Name="dbo.updatetongluongnhanvien1" Method="updatetongluongnhanvien1" />
   <Function Name="dbo.updateNhanVien" Method="updateNhanVien">
     <Parameter Name="MaNV" Parameter="maNV" Type="System.String" DbType="NVarChar(10)" />
-    <Parameter Name="songaynghi" Type="System.Int32" DbType="Int" />
-    <Parameter Name="songaydilam" Type="System.Int32" DbType="Int" />
-    <Parameter Name="PhuCap" Parameter="phuCap" Type="System.Double" DbType="Float" />
-    <Parameter Name="TienThuong" Parameter="tienThuong" Type="System.Double" DbType="Float" />
-    <Parameter Name="TienPhat" Parameter="tienPhat" Type="System.Double" DbType="Float" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.updatethanhtiennhanvien" Method="updatethanhtiennhanvien" IsComposable="true">
-    <Return Type="object" />
-  </Function>
-  <Function Name="dbo.updatetongluong" Method="updatetongluong">
-    <Parameter Name="manv" Type="System.String" DbType="NVarChar(1)" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.updatetongluongnhanvien1" Method="updatetongluongnhanvien1">
+    <Parameter Name="hoten" Type="System.String" DbType="NVarChar(70)" />
+    <Parameter Name="ngaysinh" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="gioitinh" Type="System.String" DbType="NVarChar(70)" />
+    <Parameter Name="quequan" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="sdt" Type="System.String" DbType="NVarChar(70)" />
+    <Parameter Name="mapb" Type="System.String" DbType="NVarChar(70)" />
+    <Parameter Name="macv" Type="System.String" DbType="NVarChar(70)" />
+    <Parameter Name="maluong" Type="System.String" DbType="NVarChar(70)" />
+    <Parameter Name="luong" Type="System.Double" DbType="Float" />
     <Return Type="System.Int32" />
   </Function>
 </Database>

@@ -73,6 +73,7 @@
             this.quaylai.Size = new System.Drawing.Size(74, 38);
             this.quaylai.TabIndex = 40;
             this.quaylai.Text = "Quay lại";
+            this.quaylai.Click += new System.EventHandler(this.quaylai_Click);
             // 
             // groupControl1
             // 

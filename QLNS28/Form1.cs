@@ -1,24 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using DevExpress.XtraEditors;
+using System;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
 namespace QLNS28
 {
     public partial class Form1 : XtraForm
     {
-
-
-
-//---------------------------------------------------------
-//               HÀM KHỞI CHẠY
-//---------------------------------------------------------
-        TAIKHOAN matk;
+        //---------------------------------------------------------
+        //               HÀM KHỞI CHẠY
+        //---------------------------------------------------------
+        private TAIKHOAN matk;
 
         public Form1(TAIKHOAN _matk)
         {
@@ -26,12 +19,10 @@ namespace QLNS28
             InitializeComponent();
         }
 
-        QLNSDataContext db = new QLNSDataContext();
+        private QLNSDataContext db = new QLNSDataContext();
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
-
             if (matk.MAQUYEN.Trim() == "0")
             {
                 //Các chức năng bị tắt
@@ -42,15 +33,14 @@ namespace QLNS28
                 btnPhongbanchinhsua.Enabled = false;
                 Chinhsua.Visible = false;
                 chamcong.Enabled = false;
-
             }
         }
-//---------------------------------------------------------
-//               ĐĂNG NHẬP VÀ ĐĂNG XUẤT
-//---------------------------------------------------------
+
+        //---------------------------------------------------------
+        //               ĐĂNG NHẬP VÀ ĐĂNG XUẤT
+        //---------------------------------------------------------
         private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            
             fmDangnhap f = new fmDangnhap();
             f.Show();
             this.Close();
@@ -58,18 +48,14 @@ namespace QLNS28
 
         private void barButtonItem17_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            
             fmDangnhap f = new fmDangnhap();
             f.Show();
             this.Close();
         }
 
-
-
-
-//---------------------------------------------------------
-//               PHẦN ĐIỀU HƯỚNG BÊN TRÁI
-//---------------------------------------------------------
+        //---------------------------------------------------------
+        //               PHẦN ĐIỀU HƯỚNG BÊN TRÁI
+        //---------------------------------------------------------
         private void navPhongKinhDoanh_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
             QLNSDataContext db = new QLNSDataContext();
@@ -77,7 +63,7 @@ namespace QLNS28
             gridmain.DataSource = from nv in db.NHANVIENs
                                   from cv in db.CHUCVUs
                                   from luong in db.LUONGs
-                                  
+
                                   where nv.MAPB.CompareTo("KD") == 0
                                   && nv.MACV.CompareTo(cv.MACV.ToString()) == 0
                                   && nv.MALUONG.CompareTo(luong.MALUONG.ToString()) == 0
@@ -92,7 +78,6 @@ namespace QLNS28
                                       Phòng_Ban = "Phòng Kinh Doanh",
                                       Chức_Vụ = cv.TENCV,
                                       Mức_Lương = luong.TENLUONG
-
                                   };
         }
 
@@ -103,7 +88,7 @@ namespace QLNS28
             gridmain.DataSource = from nv in db.NHANVIENs
                                   from cv in db.CHUCVUs
                                   from luong in db.LUONGs
-                                 
+
                                   where nv.MAPB.CompareTo("NS") == 0
                                   && nv.MACV.CompareTo(cv.MACV.ToString()) == 0
                                   && nv.MALUONG.CompareTo(luong.MALUONG.ToString()) == 0
@@ -118,7 +103,6 @@ namespace QLNS28
                                       Phòng_Ban = "Phòng Nhân Sự",
                                       Chức_Vụ = cv.TENCV,
                                       Mức_Lương = luong.TENLUONG
-
                                   };
         }
 
@@ -143,7 +127,6 @@ namespace QLNS28
                                       Phòng_Ban = "Phòng Kĩ Thuật",
                                       Chức_Vụ = cv.TENCV,
                                       Mức_Lương = luong.TENLUONG
-
                                   };
         }
 
@@ -154,7 +137,7 @@ namespace QLNS28
             gridmain.DataSource = from nv in db.NHANVIENs
                                   from cv in db.CHUCVUs
                                   from luong in db.LUONGs
-                                 
+
                                   where nv.MAPB.CompareTo("KT") == 0
                                   && nv.MACV.CompareTo(cv.MACV.ToString()) == 0
                                   && nv.MALUONG.CompareTo(luong.MALUONG.ToString()) == 0
@@ -169,27 +152,24 @@ namespace QLNS28
                                       Phòng_Ban = "Phòng Kế Toán",
                                       Chức_Vụ = cv.TENCV,
                                       Mức_Lương = luong.TENLUONG
-
                                   };
         }
 
+        //---------------------------------------------------------
+        //               A. PHẦN THÔNG TIN NHÂN SỰ
+        //---------------------------------------------------------
 
-//---------------------------------------------------------
-//               A. PHẦN THÔNG TIN NHÂN SỰ
-//---------------------------------------------------------
-        
         //A1: Tất cả nhân viên
         private void btnXemNhanVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            
             gridView1.Columns.Clear();
             gridmain.DataSource = from nv in db.NHANVIENs
                                   from cv in db.CHUCVUs
                                   from luong in db.LUONGs
                                   from pb in db.PHONGBANs
-                                  where nv.MAPB==pb.MAPB
-                                  && nv.MACV==cv.MACV
-                                  && nv.MALUONG==luong.MALUONG
+                                  where nv.MAPB == pb.MAPB
+                                  && nv.MACV == cv.MACV
+                                  && nv.MALUONG == luong.MALUONG
                                   select new
                                   {
                                       Mã_Nhân_Viên = nv.MANV,
@@ -200,11 +180,9 @@ namespace QLNS28
                                       SĐT = nv.SDT,
                                       Phòng_Ban = pb.TENPB,
                                       Chức_Vụ = cv.TENCV,
-                                      Lương = luong.LUONGCB*luong.HSLUONG
-
+                                      Lương = luong.LUONGCB * luong.HSLUONG
                                   };
         }
-
 
         //A2: Tải lại nhân viên
         private void btnLamMoiNhanVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -212,21 +190,17 @@ namespace QLNS28
             btnXemNhanVien_ItemClick(sender, e);
         }
 
-
         //A3: Thêm nhân viên
         private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Themnhanvien f = new Themnhanvien();
             f.ShowDialog();
             btnLamMoiNhanVien_ItemClick(sender, e);
-
         }
-
 
         //A4: Xóa nhân viên
         private void btnXoaNhanVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-           
             var ns = db.NHANVIENs.Where(a => a.MANV == gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Mã_Nhân_Viên").ToString()).SingleOrDefault();
 
             DialogResult s = XtraMessageBox.Show("Xóa " + ns.HOTEN.Trim() + " không ?", "Xóa nhân viên", MessageBoxButtons.YesNo);
@@ -238,38 +212,34 @@ namespace QLNS28
             }
         }
 
-
         //A5: Sửa thông tin
 
-
-       
         private void btnSuaNhanVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var manv = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Mã_Nhân_Viên").ToString().Trim();
+            string manv = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Mã_Nhân_Viên").ToString().Trim();
+            NHANVIEN ns = db.NHANVIENs.Where(a => a.MANV == manv).SingleOrDefault();
 
-
-            NHANVIEN ns = db.NHANVIENs.Where(a => a.MANV ==manv ).SingleOrDefault();
             if (ns != null)
             {
-                fmSuanhanvien f = new fmSuanhanvien(ns);
-                db.NHANVIENs.DeleteOnSubmit(ns);
+                NHANVIEN nv = ns as NHANVIEN;
+                fmSuanhanvien f = new fmSuanhanvien(nv);
+                //db.NHANVIENs.DeleteOnSubmit(ns);
+
                 db.SubmitChanges();
 
                 f.ShowDialog();
             }
             btnLamMoiNhanVien_ItemClick(sender, e);
             ns = null;
-
         }
-
 
         //A6: Tìm kiếm nhân viên
         private void btnTimKiemNhanVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Timkiem f = new Timkiem();
             f.ShowDialog();
-            if(f.Manv!=null){
-
+            if (f.Manv != null)
+            {
                 gridView1.Columns.Clear();
                 gridmain.DataSource = from nv in db.NHANVIENs
                                       from cv in db.CHUCVUs
@@ -290,18 +260,17 @@ namespace QLNS28
                                           Phòng_Ban = pb.TENPB,
                                           Chức_Vụ = cv.TENCV,
                                           Lương = luong.LUONGCB * luong.HSLUONG
-
                                       };
             }
-            
         }
+
         //Tìm kiếm theo tên
         private void barButtonItem14_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             TimKiemTheoTen f = new TimKiemTheoTen();
             f.ShowDialog();
-            if(f.Ten!=null){
-
+            if (f.Ten != null)
+            {
                 gridView1.Columns.Clear();
                 gridmain.DataSource = from nv in db.NHANVIENs
                                       from cv in db.CHUCVUs
@@ -322,10 +291,10 @@ namespace QLNS28
                                           Phòng_Ban = pb.TENPB,
                                           Chức_Vụ = cv.TENCV,
                                           Lương = luong.LUONGCB * luong.HSLUONG
-
                                       };
             }
         }
+
         //A7 sắp xếp
         //1. Theo mã
         private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -350,10 +319,9 @@ namespace QLNS28
                                       Phòng_Ban = pb.TENPB,
                                       Chức_Vụ = cv.TENCV,
                                       Lương = luong.LUONGCB * luong.HSLUONG
-
                                   };
-
         }
+
         //2. Theo phòng ban
         private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -377,64 +345,60 @@ namespace QLNS28
                                       Phòng_Ban = pb.TENPB,
                                       Chức_Vụ = cv.TENCV,
                                       Lương = luong.LUONGCB * luong.HSLUONG
-
                                   };
         }
+
         //3. Theo lương
         private void barButtonItem13_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             gridView1.Columns.Clear();
             var sapxepluong = from nv in db.NHANVIENs
-                                  from cv in db.CHUCVUs
-                                  from luong in db.LUONGs
-                                  from pb in db.PHONGBANs
-                                  where nv.MAPB == pb.MAPB
-                                  && nv.MACV == cv.MACV
-                                  && nv.MALUONG == luong.MALUONG
-                                  
-                                  select new
-                                  {
-                                      Mã_Nhân_Viên = nv.MANV,
-                                      Tên_Nhân_Viên = nv.HOTEN,
-                                      Ngày_Sinh = nv.NGAYSINH,
-                                      Giới_Tính = nv.GIOITINH,
-                                      Quê_Quán = nv.QUEQUAN,
-                                      SĐT = nv.SDT,
-                                      Phòng_Ban = pb.TENPB,
-                                      Chức_Vụ = cv.TENCV,
-                                      Lương = luong.LUONGCB * luong.HSLUONG
+                              from cv in db.CHUCVUs
+                              from luong in db.LUONGs
+                              from pb in db.PHONGBANs
+                              where nv.MAPB == pb.MAPB
+                              && nv.MACV == cv.MACV
+                              && nv.MALUONG == luong.MALUONG
 
-                                  };
+                              select new
+                              {
+                                  Mã_Nhân_Viên = nv.MANV,
+                                  Tên_Nhân_Viên = nv.HOTEN,
+                                  Ngày_Sinh = nv.NGAYSINH,
+                                  Giới_Tính = nv.GIOITINH,
+                                  Quê_Quán = nv.QUEQUAN,
+                                  SĐT = nv.SDT,
+                                  Phòng_Ban = pb.TENPB,
+                                  Chức_Vụ = cv.TENCV,
+                                  Lương = luong.LUONGCB * luong.HSLUONG
+                              };
             sapxepluong = sapxepluong.OrderBy(p => p.Lương);
             gridmain.DataSource = sapxepluong;
         }
 
+        //---------------------------------------------------------
+        //               AA. PHẦN PHÒNG BAN
+        //---------------------------------------------------------
 
-
-
-
-//---------------------------------------------------------
-//               AA. PHẦN PHÒNG BAN
-//---------------------------------------------------------
-        
         //AA1: Xem tất cả
         private void btnPhongban_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             gridView1.Columns.Clear();
-            gridmain.DataSource =from x in db.PHONGBANs
-                                 select new
-                                 {
-                                     Phòng_Ban= x.MAPB,
-                                     Tên_Phòng_Ban=x.TENPB,
-                                     Số_Điện_Thoại=x.SDTPB
-                                 };
+            gridmain.DataSource = from x in db.PHONGBANs
+                                  select new
+                                  {
+                                      Phòng_Ban = x.MAPB,
+                                      Tên_Phòng_Ban = x.TENPB,
+                                      Số_Điện_Thoại = x.SDTPB
+                                  };
         }
 
         //AA2: Làm mới
         private void btnPhongbanReload_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            btnPhongban_ItemClick(sender,e);
+            btnPhongban_ItemClick(sender, e);
         }
+
         //AA3: Sửa phòng ban
         private void btnPhongbanchinhsua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -448,13 +412,12 @@ namespace QLNS28
             }
         }
 
-//---------------------------------------------------------
-//               B. PHẦN LƯƠNG
-//---------------------------------------------------------
+        //---------------------------------------------------------
+        //               B. PHẦN LƯƠNG
+        //---------------------------------------------------------
         //B1: Xem lương
         private void btnXemLuong_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            
             gridView1.Columns.Clear();
             gridmain.DataSource = from luong in db.LUONGs
                                   select new
@@ -463,10 +426,8 @@ namespace QLNS28
                                       Loại_Lương = luong.TENLUONG,
                                       Lương_Cơ_Bản = luong.LUONGCB,
                                       Hệ_Số = luong.HSLUONG
-
                                   };
         }
-
 
         //B2: Làm mới
         private void barButtonItem31_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -487,18 +448,12 @@ namespace QLNS28
                 f.ShowDialog();
 
                 btnXemLuong_ItemClick(sender, e);
-
             }
         }
 
-
-
-
-
-
-//---------------------------------------------------------
-//               C. LƯU TRỮ
-//---------------------------------------------------------
+        //---------------------------------------------------------
+        //               C. LƯU TRỮ
+        //---------------------------------------------------------
         //C1: Xuất execl
         private void btnXuatExecl_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -509,12 +464,10 @@ namespace QLNS28
                 {
                     gridmain.ExportToXls(open.InitialDirectory + open.FileName + ".xls");
                     DevExpress.XtraEditors.XtraMessageBox.Show("Đã lưu tại " + open.InitialDirectory, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 }
                 catch
                 {
                     DevExpress.XtraEditors.XtraMessageBox.Show("Lỗi lưu tại ", "Thông báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Information);
-
                 }
             }
         }
@@ -529,19 +482,17 @@ namespace QLNS28
                 {
                     gridmain.ExportToPdf(open.InitialDirectory + open.FileName + ".pdf");
                     DevExpress.XtraEditors.XtraMessageBox.Show("Đã lưu tại " + open.InitialDirectory, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 }
                 catch
                 {
                     DevExpress.XtraEditors.XtraMessageBox.Show("Đã lưu tại ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 }
             }
         }
 
-//---------------------------------------------------------
-//               D. TÀI KHOẢN NGƯỜI DÙNG
-//---------------------------------------------------------
+        //---------------------------------------------------------
+        //               D. TÀI KHOẢN NGƯỜI DÙNG
+        //---------------------------------------------------------
         //D1: Xem thông tin
         private void btnXemTaiKhoan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -555,21 +506,23 @@ namespace QLNS28
                                   };
         }
 
-
         //D2: Đổi mật khẩu
         private void barButtonItem16_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             TAIKHOAN ns = new TAIKHOAN();
-            ns = db.TAIKHOANs.Where(a => a.MATK == gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Mã_Tài_Khoản").ToString()).SingleOrDefault();
+            if (ns != null)
+            {
+                ns = db.TAIKHOANs.Where(a => a.MATK == gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Mã_Tài_Khoản").ToString()).SingleOrDefault();
 
-            fmSuamatkhau f = new fmSuamatkhau(ns);
-            f.ShowDialog();
+                fmSuamatkhau f = new fmSuamatkhau(ns);
+                f.ShowDialog();
+            }
         }
 
-//---------------------------------------------------------
-//               E. TÀI KHOẢN ADMIN
-//---------------------------------------------------------     
-  
+        //---------------------------------------------------------
+        //               E. TÀI KHOẢN ADMIN
+        //---------------------------------------------------------
+
         //E1: Tất cả tài khoản
         private void barButtonItem4_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -581,11 +534,9 @@ namespace QLNS28
                                   {
                                       Mã_Tài_Khoản = a.MATK,
                                       Tên_Đăng_Nhập = a.TK,
-                                      Mật_Khẩu=a.MK,
-                                      Quyền=b.TENQUYEN
-                                       
+                                      Mật_Khẩu = a.MK,
+                                      Quyền = b.TENQUYEN
                                   };
-
         }
 
         //E2: Làm mới
@@ -606,7 +557,7 @@ namespace QLNS28
         private void barButtonItem21_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var ns = db.TAIKHOANs.Where(a => a.MATK == gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Mã_Tài_Khoản").ToString()).SingleOrDefault();
-           
+
             DialogResult s = XtraMessageBox.Show("Xóa " + ns.TK.Trim() + " không ?", "Xóa nhân viên", MessageBoxButtons.YesNo);
             if (s == DialogResult.Yes)
             {
@@ -617,6 +568,7 @@ namespace QLNS28
                 btnLamMoiTaiKhoan_ItemClick(sender, e);
             }
         }
+
         //E5: Chỉnh sửa tài khoản
         private void barButtonItem22_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -652,7 +604,6 @@ namespace QLNS28
 
         private void Form1_Click(object sender, EventArgs e)
         {
-            
         }
     }
 }

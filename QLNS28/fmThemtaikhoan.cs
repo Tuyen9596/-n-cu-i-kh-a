@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QLNS28
@@ -19,7 +14,6 @@ namespace QLNS28
 
         private void fmThemtaikhoan_Load(object sender, EventArgs e)
         {
-
         }
 
         private void quaylai_Click(object sender, EventArgs e)
@@ -35,10 +29,10 @@ namespace QLNS28
                            select a).SingleOrDefault();
 
             TAIKHOAN tdn = (from b in db.TAIKHOANs //Ten nguoi dung đã toond tai chưa
-                           where b.TK == ten.Text
-                           select b).SingleOrDefault();
+                            where b.TK == ten.Text
+                            select b).SingleOrDefault();
 
-            if (kt == null && tdn == null && mk.Text != ""  )
+            if (kt == null && tdn == null && mk.Text != "")
             {
                 if (mk.Text.checkLength())
                 {
@@ -60,11 +54,6 @@ namespace QLNS28
                 else DevExpress.XtraEditors.XtraMessageBox.Show("Mật Khẩu Tối Đa 6 kí tự !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else DevExpress.XtraEditors.XtraMessageBox.Show("Tài Khoản Đã Tồn Tại !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-
-
-            
-
         }
     }
 }

@@ -1,19 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QLNS28
 {
     public partial class fmSuaPhongBan : DevExpress.XtraEditors.XtraForm
     {
-        QLNSDataContext db = new QLNSDataContext();
-        PHONGBAN pn=null;
+        private QLNSDataContext db = new QLNSDataContext();
+        private PHONGBAN pn = null;
+
         public fmSuaPhongBan(PHONGBAN _pn)
         {
             pn = _pn;
@@ -42,17 +37,14 @@ namespace QLNS28
 
         private void xong_Click(object sender, EventArgs e)
         {
-            
-                PHONGBAN tb = db.PHONGBANs.Single(p => p.MAPB == pn.MAPB);
-                tb.MAPB = ma.Text;
-                tb.TENPB = ten.Text;
-                tb.SDTPB = sdt.Text;
-                pn = null;
-                db.SubmitChanges();
-                DevExpress.XtraEditors.XtraMessageBox.Show("Sửa thành công ! Áp dụng sau khi khởi động lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
-            
-
+            PHONGBAN tb = db.PHONGBANs.Single(p => p.MAPB == pn.MAPB);
+            tb.MAPB = ma.Text;
+            tb.TENPB = ten.Text;
+            tb.SDTPB = sdt.Text;
+            pn = null;
+            db.SubmitChanges();
+            DevExpress.XtraEditors.XtraMessageBox.Show("Sửa thành công ! Áp dụng sau khi khởi động lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Close();
         }
     }
 }
