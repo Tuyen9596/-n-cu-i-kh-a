@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace QLNS28
 {
-    public partial class Form1 : XtraForm
+    public partial class Form1 : XtraMessageBoxForm
     {
         //---------------------------------------------------------
         //               HÀM KHỞI CHẠY
@@ -509,14 +509,17 @@ namespace QLNS28
         //D2: Đổi mật khẩu
         private void barButtonItem16_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            TAIKHOAN ns = new TAIKHOAN();
-            if (ns != null)
+            try
             {
-                ns = db.TAIKHOANs.Where(a => a.MATK == gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Mã_Tài_Khoản").ToString()).SingleOrDefault();
-
-                fmSuamatkhau f = new fmSuamatkhau(ns);
-                f.ShowDialog();
+                TAIKHOAN ns = new TAIKHOAN();
+                if (ns != null)
+                {
+                    ns = db.TAIKHOANs.Where(a => a.MATK == gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Mã_Tài_Khoản").ToString()).SingleOrDefault();
+                    fmSuamatkhau f = new fmSuamatkhau(ns);
+                    f.ShowDialog();
+                }
             }
+            catch (Exception) { }
         }
 
         //---------------------------------------------------------

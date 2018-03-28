@@ -33,28 +33,29 @@
             this.txtTen = new System.Windows.Forms.TextBox();
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.txtMatKhau = new DevExpress.XtraEditors.TextEdit();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.txtMatKhau = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMatKhau.Properties)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // simpleButton1
             // 
+            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.simpleButton1.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.simpleButton1.Appearance.Options.UseFont = true;
             this.simpleButton1.Appearance.Options.UseForeColor = true;
             this.simpleButton1.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.simpleButton1.Location = new System.Drawing.Point(10, 14);
@@ -66,10 +67,11 @@
             // 
             // txtTen
             // 
+            this.txtTen.Font = new System.Drawing.Font("Tahoma", 10F);
             this.txtTen.ForeColor = System.Drawing.Color.Blue;
             this.txtTen.Location = new System.Drawing.Point(24, 57);
             this.txtTen.Name = "txtTen";
-            this.txtTen.Size = new System.Drawing.Size(202, 21);
+            this.txtTen.Size = new System.Drawing.Size(202, 24);
             this.txtTen.TabIndex = 8;
             this.txtTen.Tag = "User";
             // 
@@ -85,7 +87,7 @@
             this.pictureEdit1.Properties.ZoomAccelerationFactor = 1D;
             this.pictureEdit1.Size = new System.Drawing.Size(340, 299);
             this.pictureEdit1.TabIndex = 37;
-            this.pictureEdit1.EditValueChanged += new System.EventHandler(this.pictureEdit1_EditValueChanged);
+          //  this.pictureEdit1.EditValueChanged += new System.EventHandler(this.pictureEdit1_EditValueChanged);
             // 
             // groupControl2
             // 
@@ -101,16 +103,60 @@
             this.groupControl2.AppearanceCaption.Options.UseBorderColor = true;
             this.groupControl2.AutoSize = true;
             this.groupControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.groupControl2.Controls.Add(this.txtMatKhau);
             this.groupControl2.Controls.Add(this.label2);
             this.groupControl2.Controls.Add(this.label1);
             this.groupControl2.Controls.Add(this.panel2);
-            this.groupControl2.Controls.Add(this.txtMatKhau);
             this.groupControl2.Controls.Add(this.txtTen);
             this.groupControl2.Location = new System.Drawing.Point(354, 24);
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.Size = new System.Drawing.Size(249, 252);
             this.groupControl2.TabIndex = 38;
             this.groupControl2.Text = "Thông Tin Đăng Nhập";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.SystemColors.Control;
+            this.label2.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.label2.Location = new System.Drawing.Point(24, 97);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(66, 17);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Password";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.Control;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.label1.Location = new System.Drawing.Point(24, 36);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(39, 17);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "User ";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.simpleButton1);
+            this.panel2.Controls.Add(this.simpleButton2);
+            this.panel2.Location = new System.Drawing.Point(12, 164);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(220, 54);
+            this.panel2.TabIndex = 11;
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.simpleButton2.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.simpleButton2.Appearance.Options.UseFont = true;
+            this.simpleButton2.Appearance.Options.UseForeColor = true;
+            this.simpleButton2.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.simpleButton2.Location = new System.Drawing.Point(119, 14);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(88, 28);
+            this.simpleButton2.TabIndex = 10;
+            this.simpleButton2.Text = "Thoát";
             // 
             // panelControl1
             // 
@@ -127,45 +173,6 @@
             this.panelControl1.Size = new System.Drawing.Size(626, 299);
             this.panelControl1.TabIndex = 39;
             // 
-            // txtMatKhau
-            // 
-            this.txtMatKhau.Location = new System.Drawing.Point(24, 116);
-            this.txtMatKhau.Name = "txtMatKhau";
-            this.txtMatKhau.Properties.Appearance.ForeColor = System.Drawing.Color.Blue;
-            this.txtMatKhau.Properties.Appearance.Options.UseForeColor = true;
-            this.txtMatKhau.Size = new System.Drawing.Size(202, 20);
-            this.txtMatKhau.TabIndex = 9;
-            this.txtMatKhau.Tag = "Mật Khẩu";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.pictureEdit1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(340, 299);
-            this.panel1.TabIndex = 40;
-            // 
-            // simpleButton2
-            // 
-            this.simpleButton2.Appearance.ForeColor = System.Drawing.Color.Red;
-            this.simpleButton2.Appearance.Options.UseForeColor = true;
-            this.simpleButton2.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.simpleButton2.Location = new System.Drawing.Point(119, 14);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(88, 28);
-            this.simpleButton2.TabIndex = 10;
-            this.simpleButton2.Text = "Thoát";
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.simpleButton1);
-            this.panel2.Controls.Add(this.simpleButton2);
-            this.panel2.Location = new System.Drawing.Point(12, 164);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(220, 54);
-            this.panel2.TabIndex = 11;
-            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(72)))), ((int)(((byte)(125)))));
@@ -176,25 +183,25 @@
             this.panel3.Size = new System.Drawing.Size(622, 295);
             this.panel3.TabIndex = 0;
             // 
-            // label1
+            // panel1
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(24, 42);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 13);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "User ";
+            this.panel1.Controls.Add(this.pictureEdit1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(340, 299);
+            this.panel1.TabIndex = 40;
             // 
-            // label2
+            // txtMatKhau
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(24, 101);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 13);
-            this.label2.TabIndex = 13;
-            this.label2.Text = "Password";
+            this.txtMatKhau.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.txtMatKhau.ForeColor = System.Drawing.Color.Blue;
+            this.txtMatKhau.Location = new System.Drawing.Point(23, 116);
+            this.txtMatKhau.Name = "txtMatKhau";
+            this.txtMatKhau.PasswordChar = '*';
+            this.txtMatKhau.Size = new System.Drawing.Size(202, 24);
+            this.txtMatKhau.TabIndex = 14;
+            this.txtMatKhau.Tag = "User";
             // 
             // fmDangnhap
             // 
@@ -221,13 +228,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
+            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtMatKhau.Properties)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -238,12 +244,12 @@
         private DevExpress.XtraEditors.PictureEdit pictureEdit1;
         private DevExpress.XtraEditors.GroupControl groupControl2;
         private DevExpress.XtraEditors.PanelControl panelControl1;
-        private DevExpress.XtraEditors.TextEdit txtMatKhau;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtMatKhau;
     }
 }

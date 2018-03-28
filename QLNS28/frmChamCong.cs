@@ -1,11 +1,14 @@
 ﻿using DevExpress.XtraEditors;
 using System;
+using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace QLNS28
 {
-    public partial class frmChamCong : Form
+    public partial class frmChamCong : XtraDialogForm
     {
         private ChamCong backup = new ChamCong();
         private QLNSDataContext db;
@@ -13,6 +16,8 @@ namespace QLNS28
         public frmChamCong()
         {
             InitializeComponent();
+            //sử dụng khi các thread sử dụng chung các element
+          //  Control.CheckForIllegalCrossThreadCalls = false;
         }
 
         private void panelControl1_Paint(object sender, PaintEventArgs e)
@@ -79,7 +84,78 @@ namespace QLNS28
                 XtraMessageBox.Show(ex.Message);
             }
         }
-        #region thừa
+        #region Vô dụng
+        private void groupBox4_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txttienthuong_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbngaynghi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblmanv_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblsndl_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbltennv_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblsnn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
         private void dtgChamCong_Click(object sender, EventArgs e)
         {
         }
@@ -143,11 +219,7 @@ namespace QLNS28
         private void dtgChamCong_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
         }
-        #endregion
-        private void bunifuImageButton1_Click_1(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        #endregion 
 
         private void button4_Click(object sender, EventArgs e)
         {
@@ -187,7 +259,7 @@ namespace QLNS28
 
         private void button5_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
         }
 
         private void button3_Click_1(object sender, EventArgs e)
@@ -221,9 +293,78 @@ namespace QLNS28
         {
             DateTime date = time.Value;
             int thang = date.Month;
-            db.taobangchamcongmoi(thang, date.Year);
-            MessageBox.Show("Tạo Bảng Chấm Công Tháng  " + date.Month + " Năm " + date.Year + "  Thành Công");
+            var checkMonth = db.ChamCongs.Max(x => x.Thang);
+            if (thang <= checkMonth)
+            {
+                XtraMessageBox.Show("Tạo Bảng Chấm Công Tháng  " + date.Month + " Năm " + date.Year + "Không  Thành Công Do Bảng Chấm Công Đã Tồn Tại");
+
+            }
+            else
+            {
+                db.taobangchamcongmoi(thang, date.Year);
+                MessageBox.Show("Tạo Bảng Chấm Công Tháng  " + date.Month + " Năm " + date.Year + "  Thành Công");
+            }
+        }
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+            Rectangle r = new Rectangle(0, 0, this.Width - 1, this.Height - 1);
+            e.Graphics.DrawRectangle(Pens.Gray, r);
         }
 
+        private void button8_Click(object sender, EventArgs e)
+        {
+            ThreadStart sendmail = new ThreadStart(Send);
+            Thread send = new Thread(sendmail);
+            send.Start();
+
+        }
+        public void GuiEmail(string Title, string ToEmail, string FromEmail, string PassWord, string Content)
+        {
+            // goi email
+            MailMessage mail = new MailMessage(); mail.To.Add(ToEmail); // Địa chỉ nhận
+            mail.From = new MailAddress(ToEmail); // Địa chửi gửi
+            mail.Subject = Title; // tiêu đề gửi
+            mail.Body = Content; // Nội dung
+            mail.IsBodyHtml = true;
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com"; // host gửi của Gmail
+            smtp.Port = 587; //port của Gmail
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new System.Net.NetworkCredential(FromEmail, PassWord);//Tài khoản password người gửi
+            smtp.EnableSsl = true; //kích hoạt giao tiếp an toàn SSL
+            smtp.Send(mail); //Gửi mail đi
+        }
+        public void Send()
+        {
+            XtraMessageBox.Show("Hệ Thống Đang Gửi Mail !!! Bạn Hãy Chờ Trong Giây Lát !!!");
+            db = new QLNSDataContext();
+            var listDSachChamCong = db.ChamCongs.Where(x => x.Thang == DateTime.Now.Month);
+            foreach (var item in listDSachChamCong)
+            {
+                try
+                {
+                    var content = "Lương Tháng  " + DateTime.Now.Month + "  của bạn là " + item.TongLuong.ToString() + " VND \n"
+                                  + " Số Ngày Nghỉ :" + item.SoNgayNghi + "\n"
+                                   + " Số Ngày Đi Làm :" + item.SoNgayDiLam + "\n"
+                                    + " Tiền Phạt :" + item.TienPhat + "\n"
+                                    + " Tiền Thưởng :" + item.TienThuong + "\n"
+                                    + " Phụ Cấp :" + item.PhuCap + "\n";
+                    var NhanVien = db.NHANVIENs.SingleOrDefault(a => a.MANV == item.MaNV);
+                    var toMail = NhanVien.Email.ToString();
+                    GuiEmail("Thông Báo Lương ", toMail, "tuxenpham@gmail.com", "Kissofdeath96", content);
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show("Lỗi Gưi Mail !! Xin Kiểm Tra Lại " + ex.Message);
+                }
+            }
+            XtraMessageBox.Show("Gửi Mail Thành Công !!!");
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            frmChamCong_Load(sender, e);
+        }
     }
 }

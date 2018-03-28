@@ -2,7 +2,7 @@
   <Connection Mode="AppSettings" ConnectionString="Data Source=TUYEN\KISS;Initial Catalog=QLNS;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False" SettingsObjectName="QLNS28.Properties.Settings" SettingsPropertyName="QLNSConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.ChamCong" Member="ChamCongs">
     <Type Name="ChamCong">
-      <Column Name="MaCC" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaCC" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="MaNV" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
       <Column Name="HOTEN" Type="System.String" DbType="NVarChar(70)" CanBeNull="true" />
       <Column Name="MAPB" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
@@ -21,7 +21,6 @@
     <Type Name="CHUCVU">
       <Column Name="MACV" Type="System.String" DbType="NChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="TENCV" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Association Name="CHUCVU_NHANVIEN" Member="NHANVIENs" ThisKey="MACV" OtherKey="MACV" Type="NHANVIEN" />
     </Type>
   </Table>
   <Table Name="dbo.LUONG" Member="LUONGs">
@@ -30,7 +29,6 @@
       <Column Name="TENLUONG" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
       <Column Name="LUONGCB" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="HSLUONG" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Association Name="LUONG_NHANVIEN" Member="NHANVIENs" ThisKey="MALUONG" OtherKey="MALUONG" Type="NHANVIEN" />
     </Type>
   </Table>
   <Table Name="dbo.NHANVIEN" Member="NHANVIENs">
@@ -41,14 +39,12 @@
       <Column Name="GIOITINH" Type="System.String" DbType="NChar(4)" CanBeNull="true" />
       <Column Name="QUEQUAN" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="SDT" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="MAPB" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
       <Column Name="MACV" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
       <Column Name="MALUONG" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
       <Column Name="LUONG" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Association Name="NHANVIEN_ChamCong" Member="ChamCongs" ThisKey="MANV" OtherKey="MaNV" Type="ChamCong" />
-      <Association Name="CHUCVU_NHANVIEN" Member="CHUCVU" ThisKey="MACV" OtherKey="MACV" Type="CHUCVU" IsForeignKey="true" />
-      <Association Name="LUONG_NHANVIEN" Member="LUONG1" ThisKey="MALUONG" OtherKey="MALUONG" Type="LUONG" IsForeignKey="true" />
-      <Association Name="PHONGBAN_NHANVIEN" Member="PHONGBAN" ThisKey="MAPB" OtherKey="MAPB" Type="PHONGBAN" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.PHONGBAN" Member="PHONGBANs">
@@ -56,7 +52,6 @@
       <Column Name="MAPB" Type="System.String" DbType="NChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="TENPB" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="SDTPB" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
-      <Association Name="PHONGBAN_NHANVIEN" Member="NHANVIENs" ThisKey="MAPB" OtherKey="MAPB" Type="NHANVIEN" />
     </Type>
   </Table>
   <Table Name="dbo.QUYEN" Member="QUYENs">

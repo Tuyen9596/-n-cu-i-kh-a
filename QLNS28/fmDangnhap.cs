@@ -41,8 +41,5 @@ namespace QLNS28
             else XtraMessageBox.Show("Có gì đó sai sai !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void pictureEdit1_EditValueChanged(object sender, EventArgs e)
-        {
-        }
     }
 }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
@@ -134,6 +134,7 @@
             this.btnPhongKeToan = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem5 = new DevExpress.XtraNavBar.NavBarItem();
             this.navXemLuong = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem7 = new DevExpress.XtraNavBar.NavBarItem();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridmain = new DevExpress.XtraGrid.GridControl();
@@ -142,7 +143,7 @@
             this.barButtonItem30 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchControl1)).BeginInit();
@@ -167,6 +168,7 @@
             // ribbonControl1
             // 
             this.ribbonControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.ribbonControl1.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Orange;
             this.ribbonControl1.DrawGroupCaptions = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonControl1.ExpandCollapseItem.Id = 0;
             this.ribbonControl1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
@@ -216,6 +218,7 @@
             this.barButtonItem13,
             this.barButtonItem14});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
+            this.ribbonControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ribbonControl1.MaxItemId = 86;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
@@ -244,7 +247,7 @@
             this.ribbonControl1.ShowItemCaptionsInPageHeader = true;
             this.ribbonControl1.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Show;
             this.ribbonControl1.ShowToolbarCustomizeItem = false;
-            this.ribbonControl1.Size = new System.Drawing.Size(976, 126);
+            this.ribbonControl1.Size = new System.Drawing.Size(1139, 126);
             this.ribbonControl1.Toolbar.ShowCustomizeItem = false;
             this.ribbonControl1.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Above;
             // 
@@ -729,7 +732,7 @@
             // 
             // ribbonPageCategory2
             // 
-            this.ribbonPageCategory2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.ribbonPageCategory2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(189)))), ((int)(((byte)(40)))));
             this.ribbonPageCategory2.Name = "ribbonPageCategory2";
             this.ribbonPageCategory2.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage6,
@@ -809,7 +812,7 @@
             // 
             // ribbonPageCategory3
             // 
-            this.ribbonPageCategory3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.ribbonPageCategory3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(153)))), ((int)(((byte)(158)))));
             this.ribbonPageCategory3.Name = "ribbonPageCategory3";
             this.ribbonPageCategory3.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage8,
@@ -966,7 +969,23 @@
             // navBarControl1
             // 
             this.navBarControl1.ActiveGroup = this.navBarGroup1;
-            this.navBarControl1.BackColor = System.Drawing.Color.Lime;
+            this.navBarControl1.Appearance.Background.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(189)))), ((int)(((byte)(40)))));
+            this.navBarControl1.Appearance.Background.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(189)))), ((int)(((byte)(40)))));
+            this.navBarControl1.Appearance.Background.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(189)))), ((int)(((byte)(40)))));
+            this.navBarControl1.Appearance.Background.Options.UseBackColor = true;
+            this.navBarControl1.Appearance.Background.Options.UseBorderColor = true;
+            this.navBarControl1.Appearance.Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(189)))), ((int)(((byte)(40)))));
+            this.navBarControl1.Appearance.Button.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(189)))), ((int)(((byte)(40)))));
+            this.navBarControl1.Appearance.Button.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(189)))), ((int)(((byte)(40)))));
+            this.navBarControl1.Appearance.Button.Options.UseBackColor = true;
+            this.navBarControl1.Appearance.Button.Options.UseBorderColor = true;
+            this.navBarControl1.Appearance.ButtonPressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(153)))), ((int)(((byte)(158)))));
+            this.navBarControl1.Appearance.ButtonPressed.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(153)))), ((int)(((byte)(158)))));
+            this.navBarControl1.Appearance.ButtonPressed.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(153)))), ((int)(((byte)(158)))));
+            this.navBarControl1.Appearance.ButtonPressed.Options.UseBackColor = true;
+            this.navBarControl1.Appearance.ButtonPressed.Options.UseBorderColor = true;
+            this.navBarControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(189)))), ((int)(((byte)(40)))));
+            this.navBarControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
             this.navBarControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.navBarControl1.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
             this.navBarGroup1});
@@ -979,10 +998,11 @@
             this.navXemLuong,
             this.navBarItem1});
             this.navBarControl1.Location = new System.Drawing.Point(0, 126);
+            this.navBarControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.navBarControl1.Name = "navBarControl1";
-            this.navBarControl1.OptionsNavPane.ExpandedWidth = 140;
+            this.navBarControl1.OptionsNavPane.ExpandedWidth = 163;
             this.navBarControl1.PaintStyleKind = DevExpress.XtraNavBar.NavBarViewKind.NavigationPane;
-            this.navBarControl1.Size = new System.Drawing.Size(140, 368);
+            this.navBarControl1.Size = new System.Drawing.Size(163, 482);
             this.navBarControl1.TabIndex = 2;
             this.navBarControl1.Text = "navBarControl1";
             // 
@@ -1041,6 +1061,11 @@
             this.navXemLuong.Name = "navXemLuong";
             this.navXemLuong.SmallImage = ((System.Drawing.Image)(resources.GetObject("navXemLuong.SmallImage")));
             // 
+            // navBarItem1
+            // 
+            this.navBarItem1.Caption = "navBarItem1";
+            this.navBarItem1.Name = "navBarItem1";
+            // 
             // navBarItem7
             // 
             this.navBarItem7.Caption = "Xem lương";
@@ -1054,15 +1079,19 @@
             // 
             // gridmain
             // 
+            this.gridmain.BackgroundImage = global::QLNS28.Properties.Resources.about2;
+            this.gridmain.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.gridmain.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridLevelNode1.RelationName = "Level1";
+            this.gridmain.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            gridLevelNode2.RelationName = "Level1";
             this.gridmain.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
-            this.gridmain.Location = new System.Drawing.Point(140, 126);
+            gridLevelNode2});
+            this.gridmain.Location = new System.Drawing.Point(163, 126);
             this.gridmain.MainView = this.gridView1;
+            this.gridmain.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gridmain.MenuManager = this.ribbonControl1;
             this.gridmain.Name = "gridmain";
-            this.gridmain.Size = new System.Drawing.Size(836, 368);
+            this.gridmain.Size = new System.Drawing.Size(976, 482);
             this.gridmain.TabIndex = 4;
             this.gridmain.UseDisabledStatePainter = false;
             this.gridmain.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -1099,24 +1128,30 @@
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
             this.ribbonPageGroup3.Text = "ribbonPageGroup15";
             // 
-            // navBarItem1
+            // dateTimePicker1
             // 
-            this.navBarItem1.Caption = "navBarItem1";
-            this.navBarItem1.Name = "navBarItem1";
+            this.dateTimePicker1.Location = new System.Drawing.Point(938, 2);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 24);
+            this.dateTimePicker1.TabIndex = 6;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.Appearance.Options.UseFont = true;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(976, 494);
+            this.ClientSize = new System.Drawing.Size(1139, 608);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.gridmain);
             this.Controls.Add(this.navBarControl1);
             this.Controls.Add(this.ribbonControl1);
+            this.Font = new System.Drawing.Font("Tahoma", 10F);
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Glow;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.LookAndFeel.SkinName = "Metropolis Dark";
             this.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1263,6 +1298,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraNavBar.NavBarItem navBarItem1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }
 

@@ -249,7 +249,7 @@ namespace QLNS28
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaCC", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaCC", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int MaCC
 		{
 			get
@@ -558,8 +558,6 @@ namespace QLNS28
 		
 		private string _TENCV;
 		
-		private EntitySet<NHANVIEN> _NHANVIENs;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -572,7 +570,6 @@ namespace QLNS28
 		
 		public CHUCVU()
 		{
-			this._NHANVIENs = new EntitySet<NHANVIEN>(new Action<NHANVIEN>(this.attach_NHANVIENs), new Action<NHANVIEN>(this.detach_NHANVIENs));
 			OnCreated();
 		}
 		
@@ -616,19 +613,6 @@ namespace QLNS28
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CHUCVU_NHANVIEN", Storage="_NHANVIENs", ThisKey="MACV", OtherKey="MACV")]
-		public EntitySet<NHANVIEN> NHANVIENs
-		{
-			get
-			{
-				return this._NHANVIENs;
-			}
-			set
-			{
-				this._NHANVIENs.Assign(value);
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -648,18 +632,6 @@ namespace QLNS28
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
-		
-		private void attach_NHANVIENs(NHANVIEN entity)
-		{
-			this.SendPropertyChanging();
-			entity.CHUCVU = this;
-		}
-		
-		private void detach_NHANVIENs(NHANVIEN entity)
-		{
-			this.SendPropertyChanging();
-			entity.CHUCVU = null;
-		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.LUONG")]
@@ -675,8 +647,6 @@ namespace QLNS28
 		private System.Nullable<double> _LUONGCB;
 		
 		private System.Nullable<double> _HSLUONG;
-		
-		private EntitySet<NHANVIEN> _NHANVIENs;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -694,7 +664,6 @@ namespace QLNS28
 		
 		public LUONG()
 		{
-			this._NHANVIENs = new EntitySet<NHANVIEN>(new Action<NHANVIEN>(this.attach_NHANVIENs), new Action<NHANVIEN>(this.detach_NHANVIENs));
 			OnCreated();
 		}
 		
@@ -778,19 +747,6 @@ namespace QLNS28
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LUONG_NHANVIEN", Storage="_NHANVIENs", ThisKey="MALUONG", OtherKey="MALUONG")]
-		public EntitySet<NHANVIEN> NHANVIENs
-		{
-			get
-			{
-				return this._NHANVIENs;
-			}
-			set
-			{
-				this._NHANVIENs.Assign(value);
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -809,18 +765,6 @@ namespace QLNS28
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_NHANVIENs(NHANVIEN entity)
-		{
-			this.SendPropertyChanging();
-			entity.LUONG1 = this;
-		}
-		
-		private void detach_NHANVIENs(NHANVIEN entity)
-		{
-			this.SendPropertyChanging();
-			entity.LUONG1 = null;
 		}
 	}
 	
@@ -842,6 +786,8 @@ namespace QLNS28
 		
 		private string _SDT;
 		
+		private string _Email;
+		
 		private string _MAPB;
 		
 		private string _MACV;
@@ -851,12 +797,6 @@ namespace QLNS28
 		private System.Nullable<double> _LUONG;
 		
 		private EntitySet<ChamCong> _ChamCongs;
-		
-		private EntityRef<CHUCVU> _CHUCVU;
-		
-		private EntityRef<LUONG> _LUONG1;
-		
-		private EntityRef<PHONGBAN> _PHONGBAN;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -874,6 +814,8 @@ namespace QLNS28
     partial void OnQUEQUANChanged();
     partial void OnSDTChanging(string value);
     partial void OnSDTChanged();
+    partial void OnEmailChanging(string value);
+    partial void OnEmailChanged();
     partial void OnMAPBChanging(string value);
     partial void OnMAPBChanged();
     partial void OnMACVChanging(string value);
@@ -887,9 +829,6 @@ namespace QLNS28
 		public NHANVIEN()
 		{
 			this._ChamCongs = new EntitySet<ChamCong>(new Action<ChamCong>(this.attach_ChamCongs), new Action<ChamCong>(this.detach_ChamCongs));
-			this._CHUCVU = default(EntityRef<CHUCVU>);
-			this._LUONG1 = default(EntityRef<LUONG>);
-			this._PHONGBAN = default(EntityRef<PHONGBAN>);
 			OnCreated();
 		}
 		
@@ -1013,6 +952,26 @@ namespace QLNS28
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(100)")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this.OnEmailChanging(value);
+					this.SendPropertyChanging();
+					this._Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAPB", DbType="NChar(30)")]
 		public string MAPB
 		{
@@ -1024,10 +983,6 @@ namespace QLNS28
 			{
 				if ((this._MAPB != value))
 				{
-					if (this._PHONGBAN.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnMAPBChanging(value);
 					this.SendPropertyChanging();
 					this._MAPB = value;
@@ -1048,10 +1003,6 @@ namespace QLNS28
 			{
 				if ((this._MACV != value))
 				{
-					if (this._CHUCVU.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnMACVChanging(value);
 					this.SendPropertyChanging();
 					this._MACV = value;
@@ -1072,10 +1023,6 @@ namespace QLNS28
 			{
 				if ((this._MALUONG != value))
 				{
-					if (this._LUONG1.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnMALUONGChanging(value);
 					this.SendPropertyChanging();
 					this._MALUONG = value;
@@ -1115,108 +1062,6 @@ namespace QLNS28
 			set
 			{
 				this._ChamCongs.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CHUCVU_NHANVIEN", Storage="_CHUCVU", ThisKey="MACV", OtherKey="MACV", IsForeignKey=true)]
-		public CHUCVU CHUCVU
-		{
-			get
-			{
-				return this._CHUCVU.Entity;
-			}
-			set
-			{
-				CHUCVU previousValue = this._CHUCVU.Entity;
-				if (((previousValue != value) 
-							|| (this._CHUCVU.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._CHUCVU.Entity = null;
-						previousValue.NHANVIENs.Remove(this);
-					}
-					this._CHUCVU.Entity = value;
-					if ((value != null))
-					{
-						value.NHANVIENs.Add(this);
-						this._MACV = value.MACV;
-					}
-					else
-					{
-						this._MACV = default(string);
-					}
-					this.SendPropertyChanged("CHUCVU");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LUONG_NHANVIEN", Storage="_LUONG1", ThisKey="MALUONG", OtherKey="MALUONG", IsForeignKey=true)]
-		public LUONG LUONG1
-		{
-			get
-			{
-				return this._LUONG1.Entity;
-			}
-			set
-			{
-				LUONG previousValue = this._LUONG1.Entity;
-				if (((previousValue != value) 
-							|| (this._LUONG1.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._LUONG1.Entity = null;
-						previousValue.NHANVIENs.Remove(this);
-					}
-					this._LUONG1.Entity = value;
-					if ((value != null))
-					{
-						value.NHANVIENs.Add(this);
-						this._MALUONG = value.MALUONG;
-					}
-					else
-					{
-						this._MALUONG = default(string);
-					}
-					this.SendPropertyChanged("LUONG1");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PHONGBAN_NHANVIEN", Storage="_PHONGBAN", ThisKey="MAPB", OtherKey="MAPB", IsForeignKey=true)]
-		public PHONGBAN PHONGBAN
-		{
-			get
-			{
-				return this._PHONGBAN.Entity;
-			}
-			set
-			{
-				PHONGBAN previousValue = this._PHONGBAN.Entity;
-				if (((previousValue != value) 
-							|| (this._PHONGBAN.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._PHONGBAN.Entity = null;
-						previousValue.NHANVIENs.Remove(this);
-					}
-					this._PHONGBAN.Entity = value;
-					if ((value != null))
-					{
-						value.NHANVIENs.Add(this);
-						this._MAPB = value.MAPB;
-					}
-					else
-					{
-						this._MAPB = default(string);
-					}
-					this.SendPropertyChanged("PHONGBAN");
-				}
 			}
 		}
 		
@@ -1265,8 +1110,6 @@ namespace QLNS28
 		
 		private string _SDTPB;
 		
-		private EntitySet<NHANVIEN> _NHANVIENs;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1281,7 +1124,6 @@ namespace QLNS28
 		
 		public PHONGBAN()
 		{
-			this._NHANVIENs = new EntitySet<NHANVIEN>(new Action<NHANVIEN>(this.attach_NHANVIENs), new Action<NHANVIEN>(this.detach_NHANVIENs));
 			OnCreated();
 		}
 		
@@ -1345,19 +1187,6 @@ namespace QLNS28
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PHONGBAN_NHANVIEN", Storage="_NHANVIENs", ThisKey="MAPB", OtherKey="MAPB")]
-		public EntitySet<NHANVIEN> NHANVIENs
-		{
-			get
-			{
-				return this._NHANVIENs;
-			}
-			set
-			{
-				this._NHANVIENs.Assign(value);
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1376,18 +1205,6 @@ namespace QLNS28
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_NHANVIENs(NHANVIEN entity)
-		{
-			this.SendPropertyChanging();
-			entity.PHONGBAN = this;
-		}
-		
-		private void detach_NHANVIENs(NHANVIEN entity)
-		{
-			this.SendPropertyChanging();
-			entity.PHONGBAN = null;
 		}
 	}
 	
