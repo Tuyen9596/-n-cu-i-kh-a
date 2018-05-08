@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fmDangnhap));
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.txtTen = new System.Windows.Forms.TextBox();
-            this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.txtMatKhau = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -40,8 +40,7 @@
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtMatKhau = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
+            this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -49,6 +48,7 @@
             this.panelControl1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // simpleButton1
@@ -75,20 +75,6 @@
             this.txtTen.TabIndex = 8;
             this.txtTen.Tag = "User";
             // 
-            // pictureEdit1
-            // 
-            this.pictureEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureEdit1.EditValue = ((object)(resources.GetObject("pictureEdit1.EditValue")));
-            this.pictureEdit1.EnterMoveNextControl = true;
-            this.pictureEdit1.Location = new System.Drawing.Point(0, 0);
-            this.pictureEdit1.Name = "pictureEdit1";
-            this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
-            this.pictureEdit1.Properties.ZoomAccelerationFactor = 1D;
-            this.pictureEdit1.Size = new System.Drawing.Size(340, 299);
-            this.pictureEdit1.TabIndex = 37;
-          //  this.pictureEdit1.EditValueChanged += new System.EventHandler(this.pictureEdit1_EditValueChanged);
-            // 
             // groupControl2
             // 
             this.groupControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -113,6 +99,18 @@
             this.groupControl2.Size = new System.Drawing.Size(249, 252);
             this.groupControl2.TabIndex = 38;
             this.groupControl2.Text = "Thông Tin Đăng Nhập";
+            // 
+            // txtMatKhau
+            // 
+            this.txtMatKhau.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.txtMatKhau.ForeColor = System.Drawing.Color.Blue;
+            this.txtMatKhau.Location = new System.Drawing.Point(23, 116);
+            this.txtMatKhau.Name = "txtMatKhau";
+            this.txtMatKhau.PasswordChar = '*';
+            this.txtMatKhau.Size = new System.Drawing.Size(202, 24);
+            this.txtMatKhau.TabIndex = 14;
+            this.txtMatKhau.Tag = "User";
+            this.txtMatKhau.MouseEnter += new System.EventHandler(this.txtMatKhau_MouseEnter);
             // 
             // label2
             // 
@@ -192,16 +190,18 @@
             this.panel1.Size = new System.Drawing.Size(340, 299);
             this.panel1.TabIndex = 40;
             // 
-            // txtMatKhau
+            // pictureEdit1
             // 
-            this.txtMatKhau.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.txtMatKhau.ForeColor = System.Drawing.Color.Blue;
-            this.txtMatKhau.Location = new System.Drawing.Point(23, 116);
-            this.txtMatKhau.Name = "txtMatKhau";
-            this.txtMatKhau.PasswordChar = '*';
-            this.txtMatKhau.Size = new System.Drawing.Size(202, 24);
-            this.txtMatKhau.TabIndex = 14;
-            this.txtMatKhau.Tag = "User";
+            this.pictureEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureEdit1.EditValue = ((object)(resources.GetObject("pictureEdit1.EditValue")));
+            this.pictureEdit1.EnterMoveNextControl = true;
+            this.pictureEdit1.Location = new System.Drawing.Point(0, 0);
+            this.pictureEdit1.Name = "pictureEdit1";
+            this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
+            this.pictureEdit1.Properties.ZoomAccelerationFactor = 1D;
+            this.pictureEdit1.Size = new System.Drawing.Size(340, 299);
+            this.pictureEdit1.TabIndex = 37;
             // 
             // fmDangnhap
             // 
@@ -224,7 +224,6 @@
             this.Text = "ĐĂNG NHẬP - CÔNG TI  THÉP TÂN DÂN PHÚ";
             this.TopMost = true;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.fmDangnhap_FormClosed);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
@@ -234,6 +233,7 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

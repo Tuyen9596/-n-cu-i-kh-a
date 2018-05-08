@@ -41,5 +41,9 @@ namespace QLNS28
             else XtraMessageBox.Show("Có gì đó sai sai !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        private void txtMatKhau_MouseEnter(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
