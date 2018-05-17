@@ -66,24 +66,6 @@ namespace QLNS28
         {
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                db = new QLNSDataContext();
-                var lst = db.NHANVIENs;
-                foreach (var item in lst)
-                {
-                    db.updatetongluongnhanvien1();
-                }
-                db.SubmitChanges();
-                frmChamCong_Load(sender, e);
-            }
-            catch (Exception ex)
-            {
-                XtraMessageBox.Show(ex.Message);
-            }
-        }
         #region Vô dụng
         private void groupBox4_Enter(object sender, EventArgs e)
         {
