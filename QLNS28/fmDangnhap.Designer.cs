@@ -155,6 +155,7 @@
             this.simpleButton2.Size = new System.Drawing.Size(88, 28);
             this.simpleButton2.TabIndex = 10;
             this.simpleButton2.Text = "Thoát";
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // panelControl1
             // 
